@@ -1,4 +1,4 @@
-let string="new Fun c :\n  new b 0\n  loop a=0 a<=10 a++:\n    b=b+1\n  :\n:";
+let string="new.Var a => 10\nnew.Arr a => 23,2\n<테스트 용 코드>\nloop.a a==10 +1 => (\n)";
 let returnCode = new Array();
 let code=string.split("\n");
 let number=new Array('1','2','3','4','5','6','7','8','9','0');
@@ -26,69 +26,28 @@ for(var i=0;i<code.length;i++){
   }
   nowLetter=nowLetters.split(" ");
   //시작-------------------------------------------------------------------------------------------------------------
-  if(startWith(nowLetters,"new Arr")){
-    var letter="";
-    for(var j=3;j<nowLetter.length;j++){
-      if(j!=nowLetter.length-1){
-        letter=letter+nowLetter[j]+" ";
-      }
-      else{
-        letter=letter+nowLetter[j];
-      }
+  if(startWith(nowLetters,"new")){
+    if(nowLetters.substr(3,4)==".Var"){
+      nowReturn="let "+nowLetter[1]+" = "+nowLetter[3]+";";
     }
-    nowReturn="let "+nowLetter[2]+" = new Array("+letter+");"
-  }
-  else if(startWith(nowLetters,"new Fun")){
-    var letter="";
-    for(var j=3;j<nowLetter.length;j++){
-      if(j!=nowLetter.length-1){
-        letter=letter+nowLetter[j]+" ";
-      }
-      else{
-        letter=letter+nowLetter[j];
-      }
+    else if(nowLetters.substr(3,4)==".Arr"){
+      nowReturn="let "+nowLetter[1]+" = new Array("+nowLetter[3]+")"+";";
     }
-    var leletter="";
-    for(var j=0;j<letter.length-1;j++){
-      leletter=leletter+letter.charAt(j);
+    else if(nowLetters.substr(3,4)==".Fun"){
+      nowReturn="function "+nowLetter[1]+"{";
     }
-    nowReturn="function "+nowLetter[2]+"("+leletter+"){";
-  }
-  else if(startWith(nowLetters,"new")){
-    var letter="";
-    var isNum=1;
-    for(var j=2;j<nowLetter.length;j++){
-      if(isNaN(nowLetter[j]) == true){
-        isNum=-1;
-        console.log(nowLetter[j]);
-      }
-      if(j!=nowLetter.length-1){
-        letter=letter+nowLetter[j]+" ";
-      }
-      else{
-        letter=letter+nowLetter[j];
-      }
+    else if(nowLetters.substr(3,4)==".Con"){
+      nowReturn="Const "+nowLetter[1]+" = "+nowLetter[3]+";";
     }
-    if(isNum==1){
-      nowReturn="let "+nowLetter[1]+" = "+letter+";";
-    }
-    else{
-      nowReturn="let "+nowLetter[1]+" = '"+letter+"';";
-    }
-  }
-  else if(nowLetters == ":"){
-
-    nowReturn="}";
   }
   else if(startWith(nowLetters,"loop")){
-    var leletter="";
-    for(var j=0;j<nowLetter[3].length-1;j++){
-      leletter=leletter+nowLetter[3].charAt(j);
-    }
-    nowReturn="for(var "+nowLetter[1]+";"+nowLetter[2]+";"+leletter+"){";
+    nowReturn="for(var "+nowLetter[0].substr(5,nowLetter[i].length)+";"+nowLetter[1]+";"+nowLetter[0].substr(5,nowLetter[i].length)+"="+nowLetter[0].substr(5,nowLetter[i].length)+nowLetter[2]+"){";
   }
-  else{
-    nowReturn=nowLetters+";";
+  else if(startWith(nowLetters,")")){
+    nowReturn="}";
+  }
+  else if(startWith(nowLetters,"<")){
+    nowReturn="//"+nowLetters.substr(1,nowLetters.length-2);
   }
   //끝---------------------------------------------------------------------------------------------------------------
   spaceNum="";
@@ -100,4 +59,3 @@ for(var i=0;i<code.length;i++){
 for(var i=0;i<returnCode.length;i++){
   console.log(returnCode[i]);
 }
-
