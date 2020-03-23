@@ -1,4 +1,4 @@
-let string="new a 10\nnew a 10\nnew Arr b 'a','b','c'\nnew Fun a a,a,b:\n:";
+let string="new Fun c :\n  new b 0\n  loop a=0 a<=10 a++:\n    b=b+1\n  :\n:";
 let returnCode = new Array();
 let code=string.split("\n");
 let number=new Array('1','2','3','4','5','6','7','8','9','0');
@@ -80,6 +80,16 @@ for(var i=0;i<code.length;i++){
 
     nowReturn="}";
   }
+  else if(startWith(nowLetters,"loop")){
+    var leletter="";
+    for(var j=0;j<nowLetter[3].length-1;j++){
+      leletter=leletter+nowLetter[3].charAt(j);
+    }
+    nowReturn="for(var "+nowLetter[1]+";"+nowLetter[2]+";"+leletter+"){";
+  }
+  else{
+    nowReturn=nowLetters+";";
+  }
   //끝---------------------------------------------------------------------------------------------------------------
   spaceNum="";
   for(var k=0;k<o;k++){
@@ -90,3 +100,4 @@ for(var i=0;i<code.length;i++){
 for(var i=0;i<returnCode.length;i++){
   console.log(returnCode[i]);
 }
+
