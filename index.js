@@ -1,4 +1,4 @@
-let string="new.Var a => 10\nnew.Arr a => 23,2\n<테스트 용 코드>\nloop.a a==10 +1 => (\n)";
+let string="new.Var a => 10\nnew.Arr a => 23,2\n<테스트 용 코드>\nloop.a a==10 +1 => (\n  log => '고양이'\n? a <==> b => (\n)\n)";
 let returnCode = new Array();
 let code=string.split("\n");
 let number=new Array('1','2','3','4','5','6','7','8','9','0');
@@ -41,13 +41,22 @@ for(var i=0;i<code.length;i++){
     }
   }
   else if(startWith(nowLetters,"loop")){
-    nowReturn="for(var "+nowLetter[0].substr(5,nowLetter[i].length)+";"+nowLetter[1]+";"+nowLetter[0].substr(5,nowLetter[i].length)+"="+nowLetter[0].substr(5,nowLetter[i].length)+nowLetter[2]+"){";
+    nowReturn="for(var "+nowLetter[0].substr(5,nowLetter[i].length)+"=0;"+nowLetter[1]+";"+nowLetter[0].substr(5,nowLetter[i].length)+"="+nowLetter[0].substr(5,nowLetter[i].length)+nowLetter[2]+"){";
   }
   else if(startWith(nowLetters,")")){
     nowReturn="}";
   }
   else if(startWith(nowLetters,"<")){
     nowReturn="//"+nowLetters.substr(1,nowLetters.length-2);
+  }
+  else if(startWith(nowLetters,"log =>")){
+    nowReturn="console.log("+nowLetters.substr(6,nowLetters.length)+");";
+  }
+  else if(startWith(nowLetters,"? ")){
+    nowReturn="if("+nowLetter[1]+" "+nowLetter[2].substr(1,nowLetter[2].length-2)+" "+nowLetter[3]+"){";
+  }
+  else{
+    nowReturn=nowLetters+";";
   }
   //끝---------------------------------------------------------------------------------------------------------------
   spaceNum="";
