@@ -1,9 +1,9 @@
 function button_click() {
-	alert("다시 exJS를 javascript로 실시간으로 바꿔줄려면 수정하기 버튼을 클릭해 주세요.");
+	alert("js 코드를 복사 가능한 모드로 지정했습니다 / 복사 하시면 꼭 수정하기를 클릭해주세요");
   ez=1;
 }
 function button_click1() {
-	alert("다 완료되면 코드가 완성되면 클릭을 클릭해 주세요");
+	alert("다 완료되면 복사를 클릭해 주세요");
   ez=0;
 }
 let ez=0;
@@ -46,6 +46,27 @@ function write(a,b,c){
       category:c
     }
   });
+}
+function same(stringA,stringB){
+  if(stringB.length>stringA.length){
+    var temp = stringB;
+    stringB=stringA;
+    stringA=temp;
+  }
+  var ao=0;
+  var af=0;
+  ao=stringB.length;
+  af=stringA.length;
+  var count=0;
+  for(var i=0;i<ao;i++){
+    for(var j=0;j<af;j++){
+      if(stringB.charAt(i)==stringA.charAt(j)){
+        count++;
+        break;
+      }
+    }
+  }
+  return (count/af)*100;
 }
 setInterval(() => {
   $.get('https://playentry.org/api/discuss/find?category=free', d => {
@@ -113,6 +134,18 @@ for(var i=0;i<code.length;i++){
   else if(startWith(nowLetters,"댓글")){
     nowReturn="comment(`"+nowLetters.substr(3,nowLetters.length-3)+"`);";
   }
+	else if(startWith(nowLetters,"리스트")){
+    nowReturn="let "+nowLetter[1]+"= new Array();";
+  }
+	else if(startWith(nowLetters,"집어넣기")){
+    nowReturn=nowLetter[1]+".push(`"+nowLetter[2]+"`);";
+  }
+	else if(startWith(nowLetters,"글")){
+    nowReturn="write("+nowLetter[1]+","+nowLetter[2]+",free);";
+  }
+	else if(startWith(nowLetters,"반복 ")){
+    nowReturn="for(var "+nowLetter[2]+";"+nowLetter[2]+"=="+nowLetter[1]+";"+nowLetter[2]+"++){";
+  }
   else{
     nowReturn=nowLetters;
   }
@@ -129,13 +162,10 @@ for(var i=0;i<returnCode.length;i++){
   sdf=sdf+" "+returnCode[i]+"\n";
   numThis=numThis+(i+1)+"\n";
 }
-var str = document.getElementById("form1");
-str.innerHTML = botCode+sdf+"}";
+if(ez==0){
+	var str = document.getElementById("form1");
+	str.innerHTML = botCode+sdf+"}";
+}
 var str = document.getElementById("form2");
 str.innerHTML = numThis;
-setInterval(() => {
-  if(ez==0){
-    clearInterval();
-  }
-},100);
 },500);
