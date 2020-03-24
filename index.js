@@ -1,4 +1,12 @@
-
+function button_click() {
+	alert("다시 exJS를 javascript로 실시간으로 바꿔줄려면 수정하기 버튼을 클릭해 주세요.");
+  ez=1;
+}
+function button_click1() {
+	alert("다 완료되면 코드가 완성되면 클릭을 클릭해 주세요");
+  ez=0;
+}
+let ez=0;
 let string="new.Var a => 10\nnew.Arr a => 23,2\n<테스트 용 코드>\nloop.a a==10 +1 => (\n  log => '고양이'\n? a <==> b => (\n)\n)";
 let returnCode = new Array();
 //const request = require('request');
@@ -87,11 +95,23 @@ for(var i=0;i<code.length;i++){
   }
   nowLetter=nowLetters.split(" ");
   //시작-------------------------------------------------------------------------------------------------------------
-  if(startWith(nowLetters,"변수")){
+  if(i==0){
+    nowReturn="let botName = '"+nowLetters+"'";
+  }
+  else if(startWith(nowLetters,"변수")){
     nowReturn="let "+nowLetter[1]+" = "+nowLetter[2]+";";
   }
-  if(startWith(nowLetters,"만약")){
+  else if(startWith(nowLetters,"만약")){
     nowReturn="if("+nowLetters.substr(3,nowLetters.length-4)+"){";
+  }
+  else if(startWith(nowLetters,"아니면 만약")){
+    nowReturn="else if("+nowLetters.substr(6,nowLetters.length-4)+"){";
+  }
+  else if(startWith(nowLetters,"아니면")){
+    nowReturn="else{";
+  }
+  else if(startWith(nowLetters,"댓글")){
+    nowReturn="comment(`"+nowLetters.substr(3,nowLetters.length-3)+"`);";
   }
   else{
     nowReturn=nowLetters;
@@ -113,4 +133,9 @@ var str = document.getElementById("form1");
 str.innerHTML = botCode+sdf+"}";
 var str = document.getElementById("form2");
 str.innerHTML = numThis;
+setInterval(() => {
+  if(ez==0){
+    clearInterval();
+  }
+},100);
 },500);
