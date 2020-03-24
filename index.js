@@ -146,6 +146,9 @@ for(var i=0;i<code.length;i++){
 	else if(startWith(nowLetters,"반복 ")){
     nowReturn="for(var "+nowLetter[2]+";"+nowLetter[2]+"=="+nowLetter[1]+";"+nowLetter[2]+"++){";
   }
+	else if(startWith(nowLetters,"함수 ")){
+    nowReturn="function "+nowLetter[1]+"("+nowLetter[2]+"){";
+  }
   else{
     nowReturn=nowLetters;
   }
