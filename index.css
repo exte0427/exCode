@@ -16,6 +16,19 @@
   background-color: #2A1E41;
   color:white;
 }
+#form2{
+  border:none;
+  outline: none;
+  background-color: #2A1E41;
+  color:gray;
+  text-align: center;
+}
+#form1{
+  border:none;
+  outline: none;
+  background-color: #2A1E41;
+  color:white;
+}
 #div4{
   display: inline-block;
   width: 620px;
