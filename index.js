@@ -2,7 +2,7 @@ let sdf="";
 let sdfg="";
 document.querySelector(".copy").addEventListener("click", function(){
   var tempElem = document.createElement('textarea');
-  tempElem.value = botCode+sdf+"}";
+  tempElem.value = sdfg+botCode+sdf+"}";
   document.body.appendChild(tempElem);
 
   tempElem.select();
