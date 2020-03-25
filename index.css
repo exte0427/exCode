@@ -13,33 +13,122 @@
 #form{
   border:none;
   outline: none;
-  background-color: #2A1E41;
-  color:white;
+  background-color: white;
+  color:black;
+  resize: none;
+  height :596px;
 }
 #form3{
   border:none;
   outline: none;
-  background-color: #2A1E41;
-  color:white;
+  background-color: #F2F2F2;
+  color:#C30E65;
+  resize: none;
+  height :596px;
 }
 #form2{
   border:none;
   outline: none;
-  background-color: #2A1E41;
-  color:gray;
-  text-align: center;
+  background-color: #F2F2F2;
+  color:#FE9A2E;
+  text-align: right;
+  border-radius:13px 0px 0px 13px;
+  resize: none;
+  width: 61px;
+  height :596px;
+}
+#di{
+  height: 10px;
+
 }
 #form1{
   border:none;
   outline: none;
-  background-color: #2A1E41;
-  color:white;
+  background-color: white;
+  color:black;
+  resize: none;
+  height :596px;
+  transition: all 0.5s;
 }
 #div4{
   display: inline-block;
-  width: 600px;
+  width: 820px;
 }
 #div5{
   display: inline-block;
   width: 50px;
+}
+#form1:hover {
+    background: #F2F2F2;
+    transition: all 0.5s;
+  }
+#divdiv1{
+  height: 10px;
+}
+#d{
+  height: 200px;
+}
+#divdiv{
+  background-color: white;
+  border-radius: 15px;
+  height: 600px;
+  text-align: left;
+}
+.button {
+
+    width:100px;
+
+    background-color: white;
+
+    color:#FE642E;
+
+    padding: 15px 0;
+    outline: none;
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+    border-color: #FE642E;
+    cursor: pointer;
+    border-radius:10px 10px 10px 0px;
+    transition: all 0.2s;
+}
+.button1 {
+
+    width:100px;
+
+    background-color: white;
+
+    color:#FE642E;
+
+    padding: 15px 0;
+    outline: none;
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+    border-color: #FE642E;
+    cursor: pointer;
+    border-radius:10px 10px 10px 0px;
+    transition: all 0.2s;
+}
+.button:hover {
+    background-color: #FE642E;
+    color:white;
+    transition: all 0.2s;
+}
+.button1:hover {
+    background-color: #FE642E;
+    color:white;
+    transition: all 0.2s;
 }
