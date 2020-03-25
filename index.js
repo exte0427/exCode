@@ -232,7 +232,6 @@ for(var i=0;i<code.length;i++){
 sdfg="";
 for(var i=0;i<returnCode.length;i++){
   sdfg=sdfg+returnCode[i]+"\n";
-  numThis=numThis+(i+1)+"\n";
 }
 //============================================================================
 if(ez==0){
