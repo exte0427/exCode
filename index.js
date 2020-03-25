@@ -20,12 +20,7 @@ var user;
 var created;
 console.log("-----------made by ex-----------");
 console.log("---지금부터 봇 가동이 시작됩니다--");
-$.ajax({url:"https://playentry.org/api/project/like/5e7ab1ba3f575300afbde0ec",type:"POST",data:{targetSubject: "project", targetType: "individual"}});
-//사용자를 알기위한 목적으로 다른 목적은 없습니다
 alert("BOT - 실행됨");
-function presslike(link){
-  $.ajax({url:"https://playentry.org/api/project/like/"+link,type:"POST",data:{targetSubject: "project", targetType: "individual"}});
-}
 function comment(a){
   $.ajax({
     url:"/api/comment",
@@ -90,7 +85,6 @@ setInterval(() => {
     run();
   }
 },220);
-function run(){
 `
 let number=new Array('1','2','3','4','5','6','7','8','9','0');
 function startWith(str,str2){
@@ -122,7 +116,7 @@ for(var i=0;i<code.length;i++){
   nowLetter=nowLetters.split(" ");
   //시작-------------------------------------------------------------------------------------------------------------
   if(i==0){
-    nowReturn="let botName = '"+nowLetters+"'";
+    nowReturn="botName = '"+nowLetters+"'";
   }
   else if(startWith(nowLetters,"변수")){
     nowReturn="var "+nowLetter[1]+" = "+nowLetter[2]+";";
