@@ -16,6 +16,12 @@
   background-color: #2A1E41;
   color:white;
 }
+#form3{
+  border:none;
+  outline: none;
+  background-color: #2A1E41;
+  color:white;
+}
 #form2{
   border:none;
   outline: none;
@@ -31,5 +37,9 @@
 }
 #div4{
   display: inline-block;
-  width: 620px;
+  width: 600px;
+}
+#div5{
+  display: inline-block;
+  width: 50px;
 }
