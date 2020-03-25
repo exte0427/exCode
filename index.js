@@ -85,6 +85,7 @@ setInterval(() => {
     run();
   }
 },220);
+function run(){
 `
 let number=new Array('1','2','3','4','5','6','7','8','9','0');
 function startWith(str,str2){
@@ -116,7 +117,7 @@ for(var i=0;i<code.length;i++){
   nowLetter=nowLetters.split(" ");
   //시작-------------------------------------------------------------------------------------------------------------
   if(i==0){
-    nowReturn="botName = '"+nowLetters+"'";
+    nowReturn="let botName = '"+nowLetters+"'";
   }
   else if(startWith(nowLetters,"변수")){
     nowReturn="var "+nowLetter[1]+" = "+nowLetter[2]+";";
