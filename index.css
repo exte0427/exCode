@@ -122,12 +122,41 @@
     border-radius:10px 10px 10px 0px;
     transition: all 0.2s;
 }
+.button2 {
+
+    width:200px;
+
+    background-color: white;
+
+    color:#FE642E;
+
+    padding: 15px 0;
+    outline: none;
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+    border-color: #FE642E;
+    cursor: pointer;
+    border-radius:10px 10px 10px 0px;
+    transition: all 0.2s;
+}
 .button:hover {
     background-color: #FE642E;
     color:white;
     transition: all 0.2s;
 }
 .button1:hover {
+    background-color: #FE642E;
+    color:white;
+    transition: all 0.2s;
+}
+.button2:hover {
     background-color: #FE642E;
     color:white;
     transition: all 0.2s;
