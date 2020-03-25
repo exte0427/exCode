@@ -120,7 +120,7 @@ for(var i=0;i<code.length;i++){
     nowReturn="let botName = '"+nowLetters+"'";
   }
   else if(startWith(nowLetters,"변수")){
-    nowReturn="let "+nowLetter[1]+" = "+nowLetter[2]+";";
+    nowReturn="var "+nowLetter[1]+" = "+nowLetter[2]+";";
   }
   else if(startWith(nowLetters,"만약")){
     nowReturn="if("+nowLetters.substr(3,nowLetters.length-4)+"){";
@@ -135,7 +135,7 @@ for(var i=0;i<code.length;i++){
     nowReturn="comment(`"+nowLetters.substr(3,nowLetters.length-3)+"`);";
   }
 	else if(startWith(nowLetters,"리스트")){
-    nowReturn="let "+nowLetter[1]+"= new Array();";
+    nowReturn="var "+nowLetter[1]+"= new Array();";
   }
 	else if(startWith(nowLetters,"집어넣기")){
     nowReturn=nowLetter[1]+".push(`"+nowLetter[2]+"`);";
