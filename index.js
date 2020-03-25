@@ -1,5 +1,35 @@
 let sdf="";
 let sdfg="";
+var searchname="랜덤";
+let liText="";
+let liid="";
+async function lib(){
+	searchname= prompt("불러올 글의 이름을 써주세요 예) 랜덤");
+	liText="";
+	liid="";
+	await $.ajax({
+	    url: `https://playentry.org/api/discuss/find?title=exJSR`+searchname+"&category=free",
+	    crossDomain: true,
+	    dataType: "jsonp",
+	    type: 'GET',
+	    data: "",
+	    success: function (res) {
+	        liid = res.data[0]._id;
+	    }
+	});
+	await $.ajax({
+	    url: 'https://playentry.org/api/discuss/'+liid,
+	    crossDomain: true,
+	    dataType: "jsonp",
+	    type: 'GET',
+	    data: "",
+	    success: function (res) {
+	        liText = res.content;
+	    }
+	});
+	var sdtr = document.getElementById("form3");
+	sdtr.innerHTML = sdfg+"\n"+liText;
+}
 window.onbeforeunload = function() {};
 document.querySelector(".copy").addEventListener("click", function(){
   var tempElem = document.createElement('textarea');
