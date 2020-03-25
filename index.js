@@ -1,5 +1,6 @@
 let sdf="";
 let sdfg="";
+window.onbeforeunload = function() {};
 document.querySelector(".copy").addEventListener("click", function(){
   var tempElem = document.createElement('textarea');
   tempElem.value = sdfg+botCode+sdf+"}";
@@ -10,15 +11,65 @@ document.querySelector(".copy").addEventListener("click", function(){
   document.body.removeChild(tempElem);
 	alert("성공적으로 복사됨")
 });
-function button_click1() {
-	alert("다 완료되면 복사를 클릭해 주세요");
-  ez=0;
-}
+function bt(){
+  var tempElem = document.createElement('textarea');
+  tempElem.value = sdfg+botTest+sdf+"}alert('테스트 가 끝남');";
+  document.body.appendChild(tempElem);
+
+  tempElem.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempElem);
+	alert("자동 테스트 기능은 준비중입니다 > 테스트 코드를 복사해드렸으니 f12 > console 에 붙혀넣어주세요")
+};
 let ez=0;
 let string="new.Var a => 10\nnew.Arr a => 23,2\n<테스트 용 코드>\nloop.a a==10 +1 => (\n  log => '고양이'\n? a <==> b => (\n)\n)";
 let returnCode = new Array();
 //const request = require('request');
 let code=string.split("\n");
+const botTest =`var lastID="";
+var text;
+var id;
+var botName;
+var like;
+var user;
+var created;
+console.log("-----------made by ex-----------");
+console.log("---지금부터 봇 테스트가 시작됩니다--");
+alert("BOT - 테스트 실행");
+function comment(a){
+  alert(a+" 라는 댓글이 써짐")
+}
+function write(a,b,c){
+  alert(b+" 라는 제목에 "+a+" 라는 글이 써짐")
+}
+function same(stringA,stringB){
+  if(stringB.length>stringA.length){
+    var temp = stringB;
+    stringB=stringA;
+    stringA=temp;
+  }
+  var ao=0;
+  var af=0;
+  ao=stringB.length;
+  af=stringA.length;
+  var count=0;
+  for(var i=0;i<ao;i++){
+    for(var j=0;j<af;j++){
+      if(stringB.charAt(i)==stringA.charAt(j)){
+        count++;
+        break;
+      }
+    }
+  }
+  return (count/af)*100;
+}
+text= prompt("[테스트] 글을 써주세요");
+id="324udfs93jf";
+like="0";
+user="exmuh";
+created="2020..";
+run();
+function run(){`
 const botCode = `var lastID="";
 var text;
 var id;
