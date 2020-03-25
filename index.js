@@ -1,7 +1,15 @@
-function button_click() {
-	alert("js 코드를 복사 가능한 모드로 지정했습니다 / 복사 하시면 꼭 수정하기를 클릭해주세요");
-  ez=1;
-}
+let sdf="";
+let sdfg="";
+document.querySelector(".copy").addEventListener("click", function(){
+  var tempElem = document.createElement('textarea');
+  tempElem.value = botCode+sdf+"}";
+  document.body.appendChild(tempElem);
+
+  tempElem.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempElem);
+	alert("성공적으로 복사됨")
+});
 function button_click1() {
 	alert("다 완료되면 복사를 클릭해 주세요");
   ez=0;
@@ -117,7 +125,7 @@ for(var i=0;i<code.length;i++){
   nowLetter=nowLetters.split(" ");
   //시작-------------------------------------------------------------------------------------------------------------
   if(i==0){
-    nowReturn="let botName = '"+nowLetters+"'";
+    nowReturn="botName = '"+nowLetters+"'";
   }
   else if(startWith(nowLetters,"변수")){
     nowReturn="var "+nowLetter[1]+" = "+nowLetter[2]+";";
@@ -159,15 +167,77 @@ for(var i=0;i<code.length;i++){
   }
   returnCode.push(spaceNum+nowReturn);
 }
-var sdf="";
+sdf="";
 var numThis="";
 for(var i=0;i<returnCode.length;i++){
   sdf=sdf+" "+returnCode[i]+"\n";
   numThis=numThis+(i+1)+"\n";
 }
+
+//====================================================================
+returnCode.length = 0;
+string=document.getElementById("form3");
+code=string.value.split("\n");
+for(var i=0;i<code.length;i++){
+  nowCode=code[i];
+  nowLetters="";
+  var o=0;
+  for(o=0;nowCode[o]==" ";o++){
+  }
+  for(var k=o;k<nowCode.length;k++){
+    nowLetters=nowLetters+nowCode.charAt(k);
+  }
+  nowLetter=nowLetters.split(" ");
+  //시작-------------------------------------------------------------------------------------------------------------
+  if(startWith(nowLetters,"변수")){
+    nowReturn="var "+nowLetter[1]+" = "+nowLetter[2]+";";
+  }
+  else if(startWith(nowLetters,"만약")){
+    nowReturn="if("+nowLetters.substr(3,nowLetters.length-4)+"){";
+  }
+  else if(startWith(nowLetters,"아니면 만약")){
+    nowReturn="else if("+nowLetters.substr(6,nowLetters.length-4)+"){";
+  }
+  else if(startWith(nowLetters,"아니면")){
+    nowReturn="else{";
+  }
+  else if(startWith(nowLetters,"댓글")){
+    nowReturn="comment(`"+nowLetters.substr(3,nowLetters.length-3)+"`);";
+  }
+	else if(startWith(nowLetters,"리스트")){
+    nowReturn="var "+nowLetter[1]+"= new Array();";
+  }
+	else if(startWith(nowLetters,"집어넣기")){
+    nowReturn=nowLetter[1]+".push(`"+nowLetter[2]+"`);";
+  }
+	else if(startWith(nowLetters,"글")){
+    nowReturn="write("+nowLetter[1]+","+nowLetter[2]+",free);";
+  }
+	else if(startWith(nowLetters,"반복 ")){
+    nowReturn="for(var "+nowLetter[2]+";"+nowLetter[2]+"=="+nowLetter[1]+";"+nowLetter[2]+"++){";
+  }
+	else if(startWith(nowLetters,"함수 ")){
+    nowReturn="function "+nowLetter[1]+"("+nowLetter[2]+"){";
+  }
+  else{
+    nowReturn=nowLetters;
+  }
+  //끝---------------------------------------------------------------------------------------------------------------
+  spaceNum="";
+  for(var k=0;k<o;k++){
+    spaceNum=spaceNum+" ";
+  }
+  returnCode.push(spaceNum+nowReturn);
+}
+sdfg="";
+for(var i=0;i<returnCode.length;i++){
+  sdfg=sdfg+returnCode[i]+"\n";
+  numThis=numThis+(i+1)+"\n";
+}
+//============================================================================
 if(ez==0){
 	var str = document.getElementById("form1");
-	str.innerHTML = botCode+sdf+"}";
+	str.innerHTML = sdfg+botCode+sdf+"}";
 }
 var str = document.getElementById("form2");
 str.innerHTML = numThis;
